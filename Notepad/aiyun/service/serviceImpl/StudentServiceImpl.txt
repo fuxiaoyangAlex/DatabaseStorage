@@ -1,0 +1,78 @@
+
+/*
+*学生实现接口类
+*/
+
+
+@Service
+public class StudentServiceImpl implements StudentService{
+
+	/*
+	* 模拟数据库，初始化几个学生类放到集合中
+	*/
+	public static List<Student> studentList = new ArrayList<>();
+	
+	public static void init(){
+		studentList.add(new Student(code:"1",name:"学生1",className:"班级1",grade:"2016"));
+		studentList.add(new Student(code:"2",name:"学生2",className:"班级2",grade:"2017"));
+	}
+
+	/*
+	* 获取所有学生列表
+	*/
+	 public List<Student> findAll(){
+		return studentList;
+	 }
+	 
+	 /*
+	 *通过关键字检索学生列表
+	 */
+	public List<Student> findByKeywod(String keyword){
+		list<Student> studentList = StudentServiceImpl.studentList.stream().
+		filter(student -> keyword.equalst(student.getCode())
+				|| keyword.equals(student.getClassName())
+				|| keyword.equals(student.getGrade())
+				|| keyword.equals(student.getName())).
+				collect(Collectors.toList());	
+				return studentList;
+		
+	}
+	
+	/*
+	* 通过学号获取学生信息
+	*/
+	
+	public Student findByCode(String code){
+		for(Student studentTemp: studentList){
+			if(code.equals(studentTemp.code))
+			return student;
+	}
+	
+	/*
+	* 新建学生
+	*/
+	
+	public Student createStudent(Student student){
+		if(student.getCode()==null
+		|| student.getClassName ==null
+		|| student.getName == null;
+		throw new RuntimeException("缺少信息")
+		)
+		studentList.add(student);
+		return student;
+	}
+	
+	/*
+	* 根据学号删除学生
+	*/
+	public void deleteStudent(String code){
+		List<Student> studentList = StudentServiceImpl.studentList.stream().
+		filter(student -> code.equals(student.getCode())).
+		collect(Collectors.toList);
+		if(list.isEmpty()){
+			throw new RuntimeException("该学生不存在")
+		}
+		studentList.removeAll(list);
+	
+	
+}

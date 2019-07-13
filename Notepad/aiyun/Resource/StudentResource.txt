@@ -1,0 +1,88 @@
+
+/*
+* 学生控制层
+*/
+
+@RestController
+@RequestMapping("/api")
+ public class StudentResource{
+ private final Logger logger = LoggerFactory.getLogger(StudentResource.class);
+ 
+	private final StudentService studentService;
+	
+	public StudentResource(StudentService studentService)
+	/*构造方法注入
+	*/
+ 
+	public StudentResource(StudentService studentService){
+		this.studentService = studentService;
+	}
+	
+	/*
+	*获取所有的学生信息
+	*/
+	@GetMapping("/students")
+	@ApiOperation(value = "获取所有学生信息")
+	public ResponseEntity<List<Student>> findAll(){
+		return ResponseEntity.ok(studentService.findAll());
+	}
+	
+	/*
+	*根据学号获取学生信息
+	*/
+	@GetMapping("/students/{code}")
+	public ResponseEntity<Student> findByCode(@PathVariable String code){
+		logger.debug("获取学号为{}的学生信息",code);
+		try{
+			Student student = studentService.findByCode(code);
+			return ResponseEntity.ok(student);
+		}catch(Excepion e){
+			e.printStackTrace();
+			logger.error("获取学生失败，"，e.getMessage());
+			return ResponseEntity.badRequest().build();
+		}
+		
+	}
+	/*
+	* 通过关键字查询学生列表
+	*/
+	@GetMapping("/students/search")
+	@ApiOperation(value = "通过关键字查询")
+	public ResponseEntity<List<Student>> findByKeyword(String keyword){
+		List<Student> studentList=studentService.findByKeyword(keyword);
+		return ResponseEntity.ok(studentList);
+	}
+	
+	/*
+	* 创建学生
+	*/
+	@PostMapping("/students")
+	@ApiOperation(value = "创建学生")
+	public ResponseEntity<Student> CreateStudent()
+		studentService.createStudent(Student);
+		return ReponseEntity.ok(student);
+	
+	/*
+	*删除学生
+	*/
+	
+	@DeleteMapping("/students")
+	@ApiOperation(value = "通过学号删除学生")
+	public ResponseEntity<String> deleteStudent(String code){
+		studentService.deleteStudent();
+		return ResponseEntity.ok("删除成功!");
+	}
+ 
+ 
+ }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

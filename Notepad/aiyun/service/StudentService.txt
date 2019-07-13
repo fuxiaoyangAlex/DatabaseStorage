@@ -1,0 +1,37 @@
+public interface StudentService{
+	/*
+	*获取学生列表
+	*/
+	
+	List<Student> findAll();
+	
+	/*
+	* 通过关键字检索学生列表
+	*/
+	
+	List<Student> findByKeyword(String keyword);
+	
+	/*
+	*通过学号获取学生信息
+	*/
+	Student findByCode(String code)
+	
+	/*
+	* 新建学生
+	*/
+	
+	Student createStudent(Student student);
+	
+	/*
+	* 修改学生信息
+	*/
+	
+	Student updateStudent(Student student);
+	
+	/*
+	* 根据学号删除学生信息
+	*/
+	
+	void deleteStudent(String code);
+	
+}

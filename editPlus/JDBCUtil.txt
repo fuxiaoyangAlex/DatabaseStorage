@@ -1,0 +1,50 @@
+public class JDBCUtil{
+	public static DataSource ds=null;
+	
+		static{
+			try{
+			//加载配置文件
+			Properties p = new Properties();
+			FileInputStream in = new FileInputStream("resource/db.properties");
+			p.loand(in);
+			ds=DruidDataSourceFactory.createDataSource(p);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+		public static Connection getConn(){
+			try{
+				//连接数据库
+				return ds.getConnection()
+			}catch(Exception e){
+				e.printStackTrace()
+			}
+		}
+		return null;
+		public static void close(Connection conn,Statement stmt,ResultSet rs){
+			//释放资源
+				if (rs != null) {
+						try {
+							rs.close();
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+					if (stmt != null) {
+						try {
+							stmt.close();
+						} catch (SQLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					if (conn != null) {
+						try {
+							conn.close();
+						} catch (SQLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+			}
+		}	

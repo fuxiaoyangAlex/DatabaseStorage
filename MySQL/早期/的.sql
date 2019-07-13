@@ -1,0 +1,1 @@
+UPDATE student SET uname = '花园宝宝' WHERE usex = 2

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+   <script type="text/javascript">
+        function count(){
+      //      var a = parseInt(document.getElementById("tex1").value);
+       //      var a = document.getElementById("tex1").value*1;
+            var c=document.getElementById("tex1").value;
+            var a = Number(c);
+            var b = parseInt(document.getElementById("tex2").value);
+            var selectSign = document.getElementById("select").value;
+
+            switch (selectSign)
+            {
+                case '+':
+                    answer = a+b;break;
+                case '-':
+                    answer = a-b;break;
+                case '*':
+                    answer = a*b;break;
+                case '/':
+                    answer = a/b;
+            }
+            document.getElementById("fruit").innerHTML=answer;
+        }
+    </script>
+
+</head>
+<body>
+<input type="text" id="tex1" />
+<select id="select">
+    <option value="+">+</option>
+    <option value="-">-</option>
+    <option value="*">*</option>
+    <option value="/">/</option>
+</select>
+<input type="text" id="tex2" />
+<input type="button" value=" = " onclick="count()" />
+<input id="fruit" onclick="count()" />
+</body>
+</html>

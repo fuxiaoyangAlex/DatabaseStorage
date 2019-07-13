@@ -1,0 +1,28 @@
+public class sanjiao {
+	public static void main(String[] args) {	
+		print3(5);
+	}
+		public static void print3(int a) {
+		for(int i=1;i<=a;i++ ) {
+			for(int j=1;j<=a-i;j++) {
+				System.out.print(" ");
+			}
+			for(int k=1;k<=i*2-1;k++) {
+				System.out.print((k==1 || k==i*2-1)? "*":" ");
+			}
+			System.out.println();
+		}
+		
+		//打印每一行 行号 i
+		for(int i=a-1;i>=1;i-- ) {
+			for(int j=1;j<=a-i;j++) {
+				System.out.print(" ");
+			}
+			//打印星号
+			for(int k=1;k<=i*2-1;k++) {
+				System.out.print((k==1 || k==i*2-1)? "*":" ");
+			}
+			System.out.println();
+		}
+	}
+	}
